@@ -1,0 +1,8 @@
+modules/CGI-Application-NetNewsIface/Build
+modules/CGI-Application-NetNewsIface/META.json
+modules/CGI-Application-NetNewsIface/META.yml
+modules/CGI-Application-NetNewsIface/MYMETA.json
+modules/CGI-Application-NetNewsIface/MYMETA.yml
+modules/CGI-Application-NetNewsIface/_build
+modules/CGI-Application-NetNewsIface/blib
+modules/CGI-Application-NetNewsIface/t/data/testdb.sqlite
