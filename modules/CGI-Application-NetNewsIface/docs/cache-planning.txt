@@ -2,7 +2,7 @@ The cache will contain the following tables:
 
 groups:
 
-    name = STRING 
+    name = STRING
         - uniquely indexed.
     idx = INTEGER (unique - incremented for every group)
         - changed to primary key due to the limitations of
@@ -17,7 +17,7 @@ articles:
     msg_id - STRING
         - Unique index on (group_idx,msg_id)
             - needs to be non-unique due to SQLite constraints
-            and the fact group_idx participates in another unique index. 
+            and the fact group_idx participates in another unique index.
     parent - INTEGER
         - Non-unique Index on (group_idx,parent)
     subject - STRING
@@ -27,14 +27,14 @@ articles:
 Interface:
 ----------
 
-A frontend (base class) with multiple backends (sub-classes). The backend 
+A frontend (base class) with multiple backends (sub-classes). The backend
 handles storing and retrieving data on the disk, and the frontend uses what
 the backend supplies to do more high-level operations.
 
 The interface to the class would be as follows:
 -----------------------------------------------
 
-my $nntp_cache = 
+my $nntp_cache =
     CGI::Application::NetNewsIface::Cache::Foo->new(
         {
             'nntp' => $nntp,

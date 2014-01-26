@@ -7,7 +7,7 @@ use 5.008;
 
 =head1 NAME
 
-CGI::Application::NetNewsIface - a publicly-accessible read-only interface 
+CGI::Application::NetNewsIface - a publicly-accessible read-only interface
 for Usenet (NNTP) news.
 
 =head1 SYNOPSIS
@@ -58,7 +58,7 @@ use CGI;
 
 my %modes =
 (
-    'main' => 
+    'main' =>
     {
         'url' => "/",
         'func' => "_main_page",
@@ -148,7 +148,7 @@ sub cgiapp_prerun
         'show_all_records_url' => "search/?all=1",
     );
 
-    # TODO : There may be a more efficient/faster way to do it, but I'm 
+    # TODO : There may be a more efficient/faster way to do it, but I'm
     # anxious to get it to work. -- Shlomi Fish
     $self->tt_include_path(
         [ './templates',
@@ -273,13 +273,13 @@ sub _determine_mode
 sub _initialize
 {
 	my $self = shift;
-	
+
     my $config = shift;
-	$self->config($config); 
+	$self->config($config);
 
     my $tt = Template->new(
         {
-            'BLOCKS' => 
+            'BLOCKS' =>
                 {
                     'main' => $config->{'record_template'},
                 },
@@ -355,7 +355,7 @@ sub _groups_list_page
     my $self = shift;
 
     my $nntp = $self->_get_nntp();
-    
+
     my $groups = $nntp->list();
 
     $nntp->quit();
@@ -509,11 +509,11 @@ sub _article_display_page
     my $head = $nntp->head($article);
     my $body = $nntp->body($article);
 
-    my $article_text = 
-        join("", 
-            map 
-            { 
-                my $s = $_; 
+    my $article_text =
+        join("",
+            map
+            {
+                my $s = $_;
                 chomp($s);
                 my $s_esc = CGI::escapeHTML($s);
                 ($s =~ /^(Subject|From):/ ? "<b>$s_esc</b>" : $s_esc) . "\n";
@@ -521,16 +521,16 @@ sub _article_display_page
             @{$self->_get_headers($head)},
         ) .
         "<br />\n" .
-        join("", 
-            map { 
-                my $s = $_; 
+        join("",
+            map {
+                my $s = $_;
                 chomp($s);
                 CGI::escapeHTML($s). "\n";
             }
             @$body
         );
 
-    return 
+    return
     $self->tt_process(
         'article_display_page.tt',
         {
@@ -550,7 +550,7 @@ sub _thread_render_node
 {
     my ($self, $node, $current) = @_;
     my $subj = CGI::escapeHTML($node->{subject});
-    my $node_text = 
+    my $node_text =
         ($node->{idx} == $current) ?
             "<b>$subj</b>" :
             qq|<a href="$node->{idx}">$subj</a>|
@@ -561,8 +561,8 @@ sub _thread_render_node
         (exists($node->{subs}) ?
             ("<br /><ul>" .
             join("",
-                map 
-                    {$self->_thread_render_node($_, $current) } 
+                map
+                    {$self->_thread_render_node($_, $current) }
                 @{$node->{subs}}
             ) .
             "</ul>") :
@@ -598,17 +598,17 @@ sub _css
     $self->header_props(-type => 'text/css');
     return <<"EOF";
 .articles th, .articles td
-{ 
+{
     vertical-align:top;
     text-align: left;
 }
 .articles
 {
-    border-collapse: collapse; 
+    border-collapse: collapse;
 }
-.articles td, .articles th 
-{ 
-    border: 1.5pt black solid; 
+.articles td, .articles th
+{
+    border: 1.5pt black solid;
     padding: 2pt;
 }
 EOF

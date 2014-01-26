@@ -39,7 +39,7 @@ use CGI::Application::NetNewsIface::Test::Data1;
 
         my @info = $nntp->group("perl.qa");
         # TEST
-        is_deeply (\@info, [25, 1, 25, "perl.qa"], 
+        is_deeply (\@info, [25, 1, 25, "perl.qa"],
             "->group() in list context"
         );
     }
@@ -50,11 +50,11 @@ use CGI::Application::NetNewsIface::Test::Data1;
         my @results = grep { m{^Message-ID:} } @{$nntp->head(21)};
         # TEST
         is_deeply (
-            \@results, 
+            \@results,
             ["Message-ID: <20060418070932.5541.qmail\@lists.develooper.com>\n",],
             "head(21)",
         );
     }
-    
+
 }
 

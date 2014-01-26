@@ -1,7 +1,7 @@
 CGI-Application-NetNewsIface
 
-This CGI-Application-based web application provides a publicly-accessible, 
-read-only interface to an NNTP server (such as Usenet or nntp.perl.org). 
+This CGI-Application-based web application provides a publicly-accessible,
+read-only interface to an NNTP server (such as Usenet or nntp.perl.org).
 
 INSTALLATION
 

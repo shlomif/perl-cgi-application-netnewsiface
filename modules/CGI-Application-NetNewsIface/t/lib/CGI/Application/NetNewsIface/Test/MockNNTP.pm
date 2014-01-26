@@ -50,7 +50,7 @@ sub group
     $self->{'_group'} = $group;
     my $group_hash = $self->_get_groups()->{$group};
     my $keys = [keys(%$group_hash)];
-    return wantarray() ? 
+    return wantarray() ?
         ( scalar(@$keys), min(@$keys), max(@$keys), $group ) :
         $group;
 }

@@ -12,6 +12,7 @@ sub get_dsn
 {
     return "dbi:SQLite:dbname=./data/mynntp.sqlite"
 }
+
 sub get_app
 {
     return CGI::Application::NetNewsIface->new(
@@ -20,7 +21,7 @@ sub get_app
             'articles_per_page' => 10,
             'dsn' => get_dsn(),
         },
-    );        
+    );
 }
 
 sub create_db

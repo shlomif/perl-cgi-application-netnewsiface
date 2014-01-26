@@ -75,29 +75,29 @@ sub _initialize
 
     $self->{'sths'}->{'insert_art'} =
         $dbh->prepare_cached(
-            "INSERT INTO articles (group_idx, article_idx, msg_id, parent, subject, frm, date) 
+            "INSERT INTO articles (group_idx, article_idx, msg_id, parent, subject, frm, date)
              VALUES (?, ?, ?, ?, ?, ?, ?)"
         );
 
-    $self->{'sths'}->{'update_last_art'} = 
+    $self->{'sths'}->{'update_last_art'} =
         $dbh->prepare_cached(
             "UPDATE groups SET last_art = ? WHERE idx = ?"
         );
 
-    $self->{'sths'}->{'get_index_of_id'} = 
+    $self->{'sths'}->{'get_index_of_id'} =
         $dbh->prepare_cached(
             "SELECT article_idx FROM articles WHERE (group_idx = ?) AND (msg_id = ?)"
         );
 
-    $self->{'sths'}->{'get_parent'} = 
+    $self->{'sths'}->{'get_parent'} =
         $dbh->prepare_cached(
             "SELECT parent FROM articles WHERE (group_idx = ?) AND (article_idx = ?)"
         );
 
-    $self->{'sths'}->{'get_sub_thread'} = 
+    $self->{'sths'}->{'get_sub_thread'} =
         $dbh->prepare_cached(
-            "SELECT article_idx, subject, date, frm" . 
-            " FROM articles" . 
+            "SELECT article_idx, subject, date, frm" .
+            " FROM articles" .
             " WHERE (group_idx = ?) AND (parent = ?)" .
             # We're ordering on (group_idx, article_idx) because that's what
             # the relevant index on the table is wired to.
@@ -142,7 +142,7 @@ sub select
 sub _update_group
 {
     my $self = shift;
-    
+
     my $group = $self->{'group'};
     my $nntp = $self->{'nntp'};
     my @info = $nntp->group($group);
@@ -186,7 +186,7 @@ sub _update_group
         {
             next;
         }
-        
+
         my ($msg_id,$subject, $from, $date);
         my $parent = 0;
         foreach my $header (@$head)
@@ -214,7 +214,7 @@ sub _update_group
             }
         }
         $ins_sth->execute(
-            $group_idx, $art_idx, $msg_id, $parent, 
+            $group_idx, $art_idx, $msg_id, $parent,
             $subject, $from, $date,
         );
     }
@@ -281,7 +281,7 @@ C<$thread> looks like this:
         ],
     }
 
-C<$coords> is the coordinates leading to the current article within the 
+C<$coords> is the coordinates leading to the current article within the
 thread. To access the current article from the coords use:
 
     $thread->{'subs'}->[$coords[0]]->{'subs'}->[$coords[1]]->...
@@ -303,19 +303,19 @@ sub get_thread
         }
         $thread_head = $parent;
     }
-    
+
     # Make sure we retrieve information for the top-most node.
     my $sth = $self->{sths}->{get_art_info};
     $sth->execute($self->{group_idx}, $thread_head);
     my $info = $sth->fetchrow_arrayref();
-    my $thread_struct = 
-    { 
-        'idx' => $thread_head, 
+    my $thread_struct =
+    {
+        'idx' => $thread_head,
         'subject' => $info->[0],
         'date' => $info->[1],
         'from' => $info->[2],
     };
-    
+
     my $coords;
     $self->_get_sub_thread($thread_struct, $index, \$coords, []);
     return ($thread_struct, $coords);

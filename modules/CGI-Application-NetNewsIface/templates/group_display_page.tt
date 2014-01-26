@@ -13,11 +13,11 @@
 </p>
 
 <p>
-[% UNLESS (min_art == 1) %]<a href="./?max=[% min_art - 1 %]">[% END 
+[% UNLESS (min_art == 1) %]<a href="./?max=[% min_art - 1 %]">[% END
 %]Previous[% UNLESS (min_art == 1) %]</a>[% END %] |
-[% UNLESS (max_art == last_art) %]<a href="./[% 
-SET next_max = max_art + arts_per_page 
-%][% UNLESS next_max >= last_art %]?max=[% next_max %][% END %]">[% 
+[% UNLESS (max_art == last_art) %]<a href="./[%
+SET next_max = max_art + arts_per_page
+%][% UNLESS next_max >= last_art %]?max=[% next_max %][% END %]">[%
 END %]Next[% UNLESS (max_art == last_art) %]</a>[% END %] |
 [% UNLESS (max_art == last_art) %]<a href="./">[% END %]Latest[% UNLESS (max_art == last_art) %]</a>[% END %]
 </p>

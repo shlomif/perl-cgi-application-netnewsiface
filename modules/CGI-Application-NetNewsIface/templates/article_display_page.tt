@@ -1,7 +1,7 @@
 [% INCLUDE "header.tt" %]
 <h2><a href="..">[% group %]</a></h2>
 <p>
-[% IF (article > first_art) %]<a href="./[% article - 1 %]">[% END 
+[% IF (article > first_art) %]<a href="./[% article - 1 %]">[% END
 %]Previous[% IF (article > first_art) %]</a>[% END %] |
 [% IF (article < last_art) %]<a href="./[% article + 1 %]">[% END
 %]Next[% IF (article < last_art) %]</a>[% END %] |

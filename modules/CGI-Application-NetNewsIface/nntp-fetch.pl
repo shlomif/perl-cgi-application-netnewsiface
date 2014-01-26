@@ -10,7 +10,7 @@ use Data::Dumper;
 my $nntp = Net::NNTP->new("nntp.perl.org");
 my $index = shift;
 
-my %in = 
+my %in =
 (
     'perl.qa' => [
         # Generator for Module-Installing Makefiles
@@ -30,12 +30,12 @@ foreach my $group (keys(%in))
 {
     $nntp->group($group);
     my $ind = 1;
-    $out{$group} = 
-    { 
-        map 
-        { 
-            ($ind++) => +{'head' => $nntp->head($_) }, 
-        } 
+    $out{$group} =
+    {
+        map
+        {
+            ($ind++) => +{'head' => $nntp->head($_) },
+        }
         sort
         { $a <=> $b }
         @{$in{$group}}

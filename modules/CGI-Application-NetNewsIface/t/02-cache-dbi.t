@@ -22,7 +22,7 @@ my $dsn = "dbi:SQLite:dbname=$db_file";
 sub create_db
 {
     unlink($db_file);
-    
+
     my $app = CGI::Application::NetNewsIface->new(
         PARAMS => {
             'nntp_server' => "nntp.shlomifish.org",
@@ -40,12 +40,12 @@ sub normalize_thread
 
     $f = sub {
         my $sub = shift;
-        return { 'idx' => $sub->{idx}, 
-            (exists($sub->{subs}) ?  
+        return { 'idx' => $sub->{idx},
+            (exists($sub->{subs}) ?
                 ('subs' => [ map { $f->($_); } @{$sub->{'subs'}} ]) :
                 ()
             )
-        };    
+        };
     };
     return [$f->($thread), $coords];
 }
@@ -109,7 +109,7 @@ sub normalize_thread
             "Existence of the article with the last index"
         );
         # TEST
-        is ($cache->select("perl.advocacy"), 0, 
+        is ($cache->select("perl.advocacy"), 0,
             "select(\"perl.advocacy\") worked");
         # TEST
         is ($cache->get_index_of_id(
@@ -126,7 +126,7 @@ sub normalize_thread
             "get_index_of_id() in perl.advocacy - 2"
         );
         # TEST
-        is ($cache->select("perl.qa"), 0, 
+        is ($cache->select("perl.qa"), 0,
             "select(\"perl.qa\") worked");
         # TEST
         is ($cache->_get_parent(5),
@@ -143,7 +143,7 @@ sub normalize_thread
             0,
             "_get_parent() - 3",
         );
-        
+
         {
             my ($thread, $coords) = $cache->get_thread(2);
             # TEST
