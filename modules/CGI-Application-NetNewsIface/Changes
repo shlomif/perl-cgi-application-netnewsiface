@@ -2,6 +2,8 @@ Revision history for CGI-Application-NetNewsIface
 
 0.0201       Sun 26 Jan 19:27:54 IST 2014
     - Add missing prereq ("DBI") - Kwalitee.
+    - Add separate LICENSE.
+    - Stop shipping the Makefile.PL.
 
 0.02         Sun Jun  8 09:14:09 IDT 2008
     - Added the init_cache__mysql() function to initialize a MySQL cache.
