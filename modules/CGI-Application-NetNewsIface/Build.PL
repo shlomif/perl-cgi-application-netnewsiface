@@ -12,6 +12,9 @@ my $builder = Module::Build->new(
     license             => 'bsd',
     dist_author         => 'Shlomi Fish <shlomif@cpan.org>',
     dist_version_from   => 'lib/CGI/Application/NetNewsIface.pm',
+    configure_requires => {
+        'Module::Build' => '0.37',
+    },
     requires => {
         'CGI::Application' => 0,
         'CGI::Application::Plugin::TT' => 0,
