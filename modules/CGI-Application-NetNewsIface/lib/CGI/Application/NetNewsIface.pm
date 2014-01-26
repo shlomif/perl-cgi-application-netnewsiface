@@ -3,6 +3,8 @@ package CGI::Application::NetNewsIface;
 use strict;
 use warnings;
 
+use 5.008;
+
 =head1 NAME
 
 CGI::Application::NetNewsIface - a publicly-accessible read-only interface 

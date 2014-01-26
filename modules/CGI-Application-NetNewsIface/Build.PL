@@ -21,6 +21,9 @@ my $builder = Module::Build->new(
         'Net::NNTP' => 0,
         'Test::More' => 0,
         'XML::RSS' => 0,
+        perl => '5.008',
+        strict => 0,
+        warnings => 0,
     },
     add_to_cleanup      => [ 'CGI-Application-NetNewsIface-*' ],
     install_path =>
