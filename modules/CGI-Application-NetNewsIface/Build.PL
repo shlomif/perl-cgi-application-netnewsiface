@@ -36,6 +36,13 @@ my $builder = Module::Build->new(
     templates_files => {
         map { $_ => $_ } glob("templates/*.tt"),
     },
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "https://bitbucket.org/shlomif/perl-cgi-application-netnewsiface/",
+        },
+    },
 );
 
 $builder->add_build_element('templates');

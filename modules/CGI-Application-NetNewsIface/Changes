@@ -1,5 +1,8 @@
 Revision history for CGI-Application-NetNewsIface
 
+0.0202  2014-01-26
+    - Add a repository to the META.yml/META.json.
+
 0.0201  2014-01-26
     - Add missing prereq ("DBI") - Kwalitee.
     - Add separate LICENSE.
