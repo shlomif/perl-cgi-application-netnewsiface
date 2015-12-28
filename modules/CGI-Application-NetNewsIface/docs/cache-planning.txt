@@ -69,7 +69,7 @@ $thread looks like this:
     'idx' => $index,
     'subject' => "Problem with Test::More",
     'date' => $date,
-    'from' => "Shlomi Fish <shlomif@iglu.org.il>",
+    'from' => "Shlomi Fish <shlomif@cpan.org>",
     'subs' =>
     [
         {

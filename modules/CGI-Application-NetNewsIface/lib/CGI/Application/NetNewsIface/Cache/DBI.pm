@@ -262,7 +262,7 @@ C<$thread> looks like this:
         'idx' => $index,
         'subject' => "Problem with Test::More",
         'date' => $date,
-        'from' => "Shlomi Fish <shlomif@iglu.org.il>",
+        'from' => "Shlomi Fish <shlomif@cpan.org>",
         'subs' =>
         [
             {
@@ -359,7 +359,7 @@ sub _get_sub_thread
 
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 

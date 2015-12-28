@@ -52,7 +52,7 @@ use CGI::Application::NetNewsIface::Cache::DBI;
 
 use vars qw($VERSION);
 
-$VERSION = "0.0202";
+$VERSION = "0.0203";
 
 use CGI;
 
@@ -687,7 +687,7 @@ sub _init_cache
 
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 
